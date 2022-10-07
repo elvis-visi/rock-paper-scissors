@@ -7,7 +7,7 @@ function getComputerChoice() {
 
     //random from 3 choices
     let random = Math.floor(Math.random() * 3) + 1;
-    console.log("random number",random)
+    //console.log("random number",random)
 
     let choice;
 
@@ -38,40 +38,69 @@ function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toUpperCase();
     computerSelection = computerSelection.toUpperCase();
 
+    let winner;
+
      if( (computerSelection === 'PAPER' && playerSelection === "ROCK")
      || (computerSelection === 'ROCK' && playerSelection === "SCISSORS")
      || (computerSelection === 'SCISSORS' && playerSelection === "PAPER")
      )
-
+    
      {
-         return `"You Lose!" ${computerSelection} beats ${playerSelection}"`
+        winner = "computer"
+         console.log(`You Lose! ${computerSelection} beats ${playerSelection}`) 
 
      }else if
      ( (playerSelection === 'PAPER' && computerSelection === "ROCK")
      || (playerSelection === 'ROCK' && computerSelection === "SCISSORS")
-     || (playerSelection=== 'SCISSORS' && computerSelection === "PAPER")
+     || (playerSelection === 'SCISSORS' && computerSelection === "PAPER")
      )
      {
-
-        return `"You win!" ${playerSelection} beats ${computerSelection}"`
+       
+        winner = "player"
+        console.log(`You win!" ${playerSelection} beats ${computerSelection}`)
      }else{
-        return `"Draw" ${playerSelection} equak to ${computerSelection}"`
-     }
+        console.log(`Draw ${playerSelection} equal to ${computerSelection}`)
+    }
+
+     return winner;
     
-    //Paper beats rock
 
-    //rock beats scissors
+  }
 
-    //scissors beat paper
+  function game() {
 
+    let playerScore = 0;
+    let computerScore = 0;
 
+    //play 5 rounds
+    for( let i = 0; i < 5; i++)
+    {
+        let userChoice = prompt("Make a choice(Paper,Rock or Scissors")
+        let result = playRound(userChoice,getComputerChoice()) 
+        if(result === "player")
+        {
+            playerScore++;
+        }else if(result === "computer"){
+            computerScore++;
+        }
+
+        console.log(`Player ${playerScore} to Comp ${computerScore}`)
+    }
+    if(playerScore > computerScore) {
+        return `You win by score ${playerScore} to ${computerScore}`
+    }else if (playerScore < computerScore) {
+        return `You lose by score ${playerScore} to ${computerScore}`
+    }else{
+        return `Draw ${playerScore} to ${computerScore}`
+    }
+
+    //say who won in the end
 
 
 
   }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+
+console.log(game());
 
 
