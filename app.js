@@ -27,11 +27,51 @@ function getComputerChoice() {
             break;     
 
     }
-    return choice;
     console.log("choice made" , choice)
-}
+    return choice;
+}  
+  
+
+//single round, player and computer selection
+function playRound(playerSelection, computerSelection) {
+
+    playerSelection = playerSelection.toUpperCase();
+    computerSelection = computerSelection.toUpperCase();
+
+     if( (computerSelection === 'PAPER' && playerSelection === "ROCK")
+     || (computerSelection === 'ROCK' && playerSelection === "SCISSORS")
+     || (computerSelection === 'SCISSORS' && playerSelection === "PAPER")
+     )
+
+     {
+         return `"You Lose!" ${computerSelection} beats ${playerSelection}"`
+
+     }else if
+     ( (playerSelection === 'PAPER' && computerSelection === "ROCK")
+     || (playerSelection === 'ROCK' && computerSelection === "SCISSORS")
+     || (playerSelection=== 'SCISSORS' && computerSelection === "PAPER")
+     )
+     {
+
+        return `"You win!" ${playerSelection} beats ${computerSelection}"`
+     }else{
+        return `"Draw" ${playerSelection} equak to ${computerSelection}"`
+     }
+    
+    //Paper beats rock
+
+    //rock beats scissors
+
+    //scissors beat paper
 
 
 
 
-getComputerChoice()
+
+  }
+
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
+
+
